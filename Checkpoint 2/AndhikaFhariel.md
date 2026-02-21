@@ -1,4 +1,5 @@
-<img width="1033" height="579" alt="image" src="https://github.com/user-attachments/assets/5214e8df-9283-4e6a-8ba7-5cb2e8d54a5d" />
+<img width="1031" height="576" alt="image" src="https://github.com/user-attachments/assets/d49369f8-889c-4e31-95e3-d95407e8d9fe" />
+
 
 Struktur Data (Informasi Lanjutan)
 <img width="658" height="210" alt="image" src="https://github.com/user-attachments/assets/a6fe8dc8-79fd-4607-ae38-f87ae13d3349" />
