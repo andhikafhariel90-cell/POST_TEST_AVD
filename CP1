@@ -1,0 +1,533 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Nama : Andhika Fhariel Fadhlurrohman\n",
+        "\n",
+        "NIM : 2509116083\n",
+        "\n",
+        "Kelas C 2025"
+      ],
+      "metadata": {
+        "id": "MKj_a6swOhsU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "dzzRnjxsaJ2z"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "##Google Drive"
+      ],
+      "metadata": {
+        "id": "O_WFhKgANgLs"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')\n",
+        "\n",
+        "path = '/content/drive/MyDrive/Check point AVD/consumer_electronics_sales_data.csv'"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vHx2ZXXsLpBz",
+        "outputId": "b0ae3a13-887d-4e44-a6e2-bfa11497662e"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Mounted at /content/drive\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df = pd.read_csv(path)\n",
+        "df"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 443
+        },
+        "id": "lASeaExHMqN3",
+        "outputId": "3a145f80-eb95-45c5-db38-4f8dcb475aaf"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "      ProductID ProductCategory  ProductBrand  ProductPrice  CustomerAge  \\\n",
+              "0          5874     Smartphones  Other Brands    312.949668           18   \n",
+              "1          5875   Smart Watches       Samsung    980.389404           35   \n",
+              "2          5876         Tablets       Samsung   2606.718293           63   \n",
+              "3          5877     Smartphones       Samsung    870.395450           63   \n",
+              "4          5878         Tablets          Sony   1798.955875           57   \n",
+              "...         ...             ...           ...           ...          ...   \n",
+              "8995      14869   Smart Watches       Samsung   1041.149163           36   \n",
+              "8996      14870     Smartphones       Samsung   1485.694311           57   \n",
+              "8997      14871      Headphones       Samsung   2887.369597           28   \n",
+              "8998      14872         Tablets            HP   1490.453964           38   \n",
+              "8999      14873     Smartphones          Sony   2315.583087           62   \n",
+              "\n",
+              "      CustomerGender  PurchaseFrequency  CustomerSatisfaction  PurchaseIntent  \n",
+              "0                  0                  2                     1               0  \n",
+              "1                  1                  7                     2               1  \n",
+              "2                  0                  1                     5               1  \n",
+              "3                  1                 10                     3               1  \n",
+              "4                  0                 17                     3               0  \n",
+              "...              ...                ...                   ...             ...  \n",
+              "8995               1                 16                     4               0  \n",
+              "8996               0                  5                     1               1  \n",
+              "8997               0                 18                     4               0  \n",
+              "8998               0                  4                     2               1  \n",
+              "8999               0                 15                     2               1  \n",
+              "\n",
+              "[9000 rows x 9 columns]"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-e92c40c1-0707-40e8-acde-8efeccf52925\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>ProductID</th>\n",
+              "      <th>ProductCategory</th>\n",
+              "      <th>ProductBrand</th>\n",
+              "      <th>ProductPrice</th>\n",
+              "      <th>CustomerAge</th>\n",
+              "      <th>CustomerGender</th>\n",
+              "      <th>PurchaseFrequency</th>\n",
+              "      <th>CustomerSatisfaction</th>\n",
+              "      <th>PurchaseIntent</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>5874</td>\n",
+              "      <td>Smartphones</td>\n",
+              "      <td>Other Brands</td>\n",
+              "      <td>312.949668</td>\n",
+              "      <td>18</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>5875</td>\n",
+              "      <td>Smart Watches</td>\n",
+              "      <td>Samsung</td>\n",
+              "      <td>980.389404</td>\n",
+              "      <td>35</td>\n",
+              "      <td>1</td>\n",
+              "      <td>7</td>\n",
+              "      <td>2</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>5876</td>\n",
+              "      <td>Tablets</td>\n",
+              "      <td>Samsung</td>\n",
+              "      <td>2606.718293</td>\n",
+              "      <td>63</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>5</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>5877</td>\n",
+              "      <td>Smartphones</td>\n",
+              "      <td>Samsung</td>\n",
+              "      <td>870.395450</td>\n",
+              "      <td>63</td>\n",
+              "      <td>1</td>\n",
+              "      <td>10</td>\n",
+              "      <td>3</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>5878</td>\n",
+              "      <td>Tablets</td>\n",
+              "      <td>Sony</td>\n",
+              "      <td>1798.955875</td>\n",
+              "      <td>57</td>\n",
+              "      <td>0</td>\n",
+              "      <td>17</td>\n",
+              "      <td>3</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>...</th>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8995</th>\n",
+              "      <td>14869</td>\n",
+              "      <td>Smart Watches</td>\n",
+              "      <td>Samsung</td>\n",
+              "      <td>1041.149163</td>\n",
+              "      <td>36</td>\n",
+              "      <td>1</td>\n",
+              "      <td>16</td>\n",
+              "      <td>4</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8996</th>\n",
+              "      <td>14870</td>\n",
+              "      <td>Smartphones</td>\n",
+              "      <td>Samsung</td>\n",
+              "      <td>1485.694311</td>\n",
+              "      <td>57</td>\n",
+              "      <td>0</td>\n",
+              "      <td>5</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8997</th>\n",
+              "      <td>14871</td>\n",
+              "      <td>Headphones</td>\n",
+              "      <td>Samsung</td>\n",
+              "      <td>2887.369597</td>\n",
+              "      <td>28</td>\n",
+              "      <td>0</td>\n",
+              "      <td>18</td>\n",
+              "      <td>4</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8998</th>\n",
+              "      <td>14872</td>\n",
+              "      <td>Tablets</td>\n",
+              "      <td>HP</td>\n",
+              "      <td>1490.453964</td>\n",
+              "      <td>38</td>\n",
+              "      <td>0</td>\n",
+              "      <td>4</td>\n",
+              "      <td>2</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8999</th>\n",
+              "      <td>14873</td>\n",
+              "      <td>Smartphones</td>\n",
+              "      <td>Sony</td>\n",
+              "      <td>2315.583087</td>\n",
+              "      <td>62</td>\n",
+              "      <td>0</td>\n",
+              "      <td>15</td>\n",
+              "      <td>2</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "<p>9000 rows × 9 columns</p>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-e92c40c1-0707-40e8-acde-8efeccf52925')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-e92c40c1-0707-40e8-acde-8efeccf52925 button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-e92c40c1-0707-40e8-acde-8efeccf52925');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "  <div id=\"id_6d2f37b8-150d-44ad-b87a-85356034b44b\">\n",
+              "    <style>\n",
+              "      .colab-df-generate {\n",
+              "        background-color: #E8F0FE;\n",
+              "        border: none;\n",
+              "        border-radius: 50%;\n",
+              "        cursor: pointer;\n",
+              "        display: none;\n",
+              "        fill: #1967D2;\n",
+              "        height: 32px;\n",
+              "        padding: 0 0 0 0;\n",
+              "        width: 32px;\n",
+              "      }\n",
+              "\n",
+              "      .colab-df-generate:hover {\n",
+              "        background-color: #E2EBFA;\n",
+              "        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "        fill: #174EA6;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate {\n",
+              "        background-color: #3B4455;\n",
+              "        fill: #D2E3FC;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate:hover {\n",
+              "        background-color: #434B5C;\n",
+              "        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "        fill: #FFFFFF;\n",
+              "      }\n",
+              "    </style>\n",
+              "    <button class=\"colab-df-generate\" onclick=\"generateWithVariable('df')\"\n",
+              "            title=\"Generate code using this dataframe.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "    <script>\n",
+              "      (() => {\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#id_6d2f37b8-150d-44ad-b87a-85356034b44b button.colab-df-generate');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      buttonEl.onclick = () => {\n",
+              "        google.colab.notebook.generateWithVariable('df');\n",
+              "      }\n",
+              "      })();\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "df",
+              "summary": "{\n  \"name\": \"df\",\n  \"rows\": 9000,\n  \"fields\": [\n    {\n      \"column\": \"ProductID\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 2598,\n        \"min\": 5874,\n        \"max\": 14873,\n        \"num_unique_values\": 9000,\n        \"samples\": [\n          13814,\n          7036,\n          6456\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"ProductCategory\",\n      \"properties\": {\n        \"dtype\": \"category\",\n        \"num_unique_values\": 5,\n        \"samples\": [\n          \"Smart Watches\",\n          \"Headphones\",\n          \"Tablets\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"ProductBrand\",\n      \"properties\": {\n        \"dtype\": \"category\",\n        \"num_unique_values\": 5,\n        \"samples\": [\n          \"Samsung\",\n          \"Apple\",\n          \"Sony\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"ProductPrice\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 829.9008980338331,\n        \"min\": 100.3763582884275,\n        \"max\": 2999.852253399973,\n        \"num_unique_values\": 9000,\n        \"samples\": [\n          1614.4133403420292,\n          1123.57897635914,\n          2192.7830157136277\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"CustomerAge\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 15,\n        \"min\": 18,\n        \"max\": 69,\n        \"num_unique_values\": 52,\n        \"samples\": [\n          65,\n          44,\n          45\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"CustomerGender\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 0,\n        \"max\": 1,\n        \"num_unique_values\": 2,\n        \"samples\": [\n          1,\n          0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"PurchaseFrequency\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 5,\n        \"min\": 1,\n        \"max\": 19,\n        \"num_unique_values\": 19,\n        \"samples\": [\n          2,\n          8\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"CustomerSatisfaction\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 1,\n        \"min\": 1,\n        \"max\": 5,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          2,\n          4\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"PurchaseIntent\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 0,\n        \"max\": 1,\n        \"num_unique_values\": 2,\n        \"samples\": [\n          1,\n          0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Business Understanding**"
+      ],
+      "metadata": {
+        "id": "ot8m4INSF5ab"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Pasar elektronik konsumen sangat kompetitif dengan siklus hidup produk yang pendek. Perusahaan ritel sering kali memiliki data transaksi yang besar namun kesulitan untuk memahami siapa pelanggan mereka sebenarnya dan produk apa yang paling menguntungkan. Tanpa pemahaman ini, strategi pemasaran dan stok barang sering kali tidak tepat sasaran."
+      ],
+      "metadata": {
+        "id": "4LkxmTjTLMxF"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## **Business Objective**"
+      ],
+      "metadata": {
+        "id": "3TDe_65sGYBC"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        " Tujuan utama dari inisiatif bisnis ini adalah untuk memacu pertumbuhan pendapatan melalui strategi berbasis data yang komprehensif. Dengan mengidentifikasi faktor penentu total belanja pelanggan, perusahaan dapat secara efektif meningkatkan volume penjualan sekaligus mengoptimalkan personalisasi pemasaran melalui pemetaan preferensi produk—seperti Laptop, Smartphone, dan TV berdasarkan demografi umur serta gender. Selain itu, analisis ini bertujuan untuk mencapai efisiensi operasional melalui optimalisasi inventaris yang presisi, yang didasarkan pada pemahaman mendalam mengenai pola waktu puncak pembelian dan tingkat perputaran produk yang paling diminati di pasar."
+      ],
+      "metadata": {
+        "id": "4xSdQLcrGcVE"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## **Asses Situasion**"
+      ],
+      "metadata": {
+        "id": "lfwnn_fvHLK3"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Analisis ini memanfaatkan dataset komprehensif yang mencakup profil pelanggan (ID, umur, gender), detail transaksi (kategori produk, kuantitas, harga), serta data penilaian produk untuk mengukur kepuasan konsumen. Meskipun proses identifikasi tren dibatasi oleh anonimitas data yang meniadakan variabel lokasi geografis, seluruh pengolahan dan pemodelan dilakukan secara efisien menggunakan ekosistem Python khususnya pustaka Pandas, Matplotlib, dan Scikit Learn di dalam lingkungan kerja Google Colab yang kolaboratif."
+      ],
+      "metadata": {
+        "id": "OfTlqzugHR2y"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## **Analytic Goals**"
+      ],
+      "metadata": {
+        "id": "1Zg8FK_mHd1r"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Proses analisis data ini dilakukan secara bertahap, dimulai dari Analisis Deskriptif untuk memetakan performa produk unggulan, profil demografi target pasar, serta tren musiman guna menangkap dinamika penjualan historis. Langkah ini diperdalam melalui Analisis Diagnostik yang mengevaluasi elastisitas harga terhadap kuantitas penjualan serta korelasi kategori produk dengan tingkat kepuasan pelanggan untuk mengidentifikasi akar permasalahan performa pasar. Untuk memitigasi risiko masa depan, Analisis Prediktif diterapkan menggunakan model regresi dan klasifikasi untuk memproyeksikan nilai transaksi serta perilaku pembelian pelanggan baru. Seluruh temuan tersebut kemudian dikonversi menjadi strategi konkret dalam Analisis Preskriptif, yang mencakup rekomendasi bundling produk yang sinergis serta optimasi kebijakan diskon yang presisi untuk menstimulasi kategori produk dengan perputaran rendah."
+      ],
+      "metadata": {
+        "id": "GhkHcXsKHtTt"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## **Project Plan**"
+      ],
+      "metadata": {
+        "id": "QVQjlMUDIs4n"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Alur kerja proyek ini dimulai dengan tahap Data Preparation untuk menjamin kualitas analisis melalui pembersihan nilai yang hilang dan melakukan encoding pada variabel kategori seperti gender dan kategori produk. Selanjutnya, dilakukan Exploratory Data Analysis (EDA) untuk memvisualisasikan distribusi demografi, tren penjualan periodik, serta komparasi performa antarproduk guna menangkap pola perilaku pasar yang signifikan. Pada tahap Modeling, algoritma Machine Learning seperti Random Forest atau Linear Regression diterapkan dan hasilnya akan diuji melalui tahap Evaluation menggunakan metrik MSE atau R2 Score untuk memastikan akurasi prediksi. Seluruh rangkaian ini diakhiri dengan tahap Deployment/Reporting, di mana temuan teknis dikonversi menjadi insight strategis yang siap dipresentasikan kepada tim manajemen untuk pengambilan keputusan bisnis yang tepat."
+      ],
+      "metadata": {
+        "id": "Lr970JbYIxPM"
+      }
+    }
+  ]
+}
